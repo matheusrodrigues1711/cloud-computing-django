@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastrar Produto</title>
+</head>
+<body>
+
+    <h1>
+    {% if editar %}
+        Editar Produto
+    {% else %}
+        Cadastrar Produto
+    {% endif %}
+    </h1>
+
+    <form method="post">
+        {% csrf_token %}
+
+        <p>
+            <label for="id_nome">Nome:</label><br>
+            {{ form.nome }}
+        </p>
+
+        <p>
+            <label for="id_descricao">Descrição:</label><br>
+            {{ form.descricao }}
+        </p>
+
+        <p>
+            <label for="id_preco">Preço:</label><br>
+            {{ form.preco }}
+        </p>
+
+        <p>
+            <label for="id_quantidade">Quantidade:</label><br>
+            {{ form.quantidade }}
+        </p>
+
+        <button type="submit">
+            {% if editar %}
+                Atualizar
+            {% else %}
+                Salvar
+            {% endif %}
+        </button>
+        <a href="{% url 'lista_produtos' %}">Cancelar</a>
+    </form>
+
+</body>
+</html>
